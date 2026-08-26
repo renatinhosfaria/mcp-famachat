@@ -22,7 +22,13 @@
 - Capturar a senha gerada num pipeline shell direto para o `.env`, sem passar pelo transcript.
 
 ## Domain Notes
-- **Hermes 0.14.0** (verificado em `/opt/hermes/tools/mcp_tool.py`, container `famachat-saas-hermes-daemon-1`): servidores por `url` usam Streamable HTTP; envia só os headers estáticos de `config.headers` + `mcp-protocol-version`; abre a conexão uma vez no boot; suporta `tools.include`/`exclude`, `timeout`, `connect_timeout`.
+- **Duas versões de Hermes em jogo — não confundir.** O container local `famachat-saas-hermes-daemon-1` roda **0.14.0**; o VPS que consome este MCP roda **0.20.5**. Verificar comportamento no container local e concluir sobre o consumidor foi um erro (26/08): a 0.20.5 tem recursos que a 0.14.0 não tem. Ao investigar, usar o código da `main` do repo `NousResearch/hermes-agent`, não o container.
+- **Hermes (ambas as versões)**: servidores por `url` usam Streamable HTTP; envia os headers estáticos de `config.headers` + `mcp-protocol-version`; abre a conexão uma vez no boot; suporta `tools.include`/`exclude`, `timeout`, `connect_timeout`.
+- **Hermes 0.20.5, o que mudou** (verificado em `tools/mcp_tool.py` e `tools/mcp_oauth.py` da main):
+  - `auth: oauth` — OAuth 2.1 com PKCE, via `OAuthClientProvider` do SDK Python. Grants: só `authorization_code` + `refresh_token`; **sem `client_credentials`**, então a primeira autorização passa por navegador. Usar OAuth exigiria virar Authorization Server 2.1 completo (RFC 9728 + 8414 + PKCE + 7591/CIMD). Bearer estático continua suportado e é o que usamos.
+  - **Preflight de content-type** antes de conectar: HEAD, e GET se vier 405. Só rejeita resposta **2xx** com content-type fora de `application/json`/`text/event-stream`. Nosso `/mcp` responde 405 em HEAD/GET → passa. `skip_preflight: true` existe para quem falha nisso.
+  - `keepalive_interval` (padrão 180s) manda `ping` JSON-RPC — nosso servidor responde mesmo stateless.
+  - `identity_header`, `ssl_verify`, `client_cert`, `lifecycle` (recycle de stdio) também são novos.
 - Backend do FamaChat: guarda de auth global roda **antes** do roteamento — rota inexistente também devolve 401. Não dá para sondar existência de rota sem token válido.
 - Login do backend usa **email** (não username); access token 1h, refresh 7d; `token_version` invalida tokens antigos.
 - Usuário de serviço: `hermes-agent`, id 40, papel `Gestor`/`Gestão`. Revogar com `UPDATE sistema_users SET is_active = false WHERE username = 'hermes-agent'`.

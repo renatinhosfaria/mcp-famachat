@@ -33,8 +33,21 @@ O total é impresso no boot e exposto em `GET /health`.
 ## Duas credenciais, dois propósitos
 
 **Hermes → MCP**: Bearer token estático (`MCP_API_KEY`), comparado em tempo constante.
-O Hermes 0.14.0 só envia os headers estáticos declarados no `config.yaml`, então esta é
-a única forma de credencial que chega até aqui.
+
+O Hermes também aceita `auth: oauth` (OAuth 2.1 com PKCE) para servidores MCP remotos —
+disponível na 0.20.5, que é a versão do VPS que consome este servidor. Bearer foi a
+escolha, não a única opção. O motivo é a assimetria de custo: usar OAuth exigiria
+transformar este servidor num Authorization Server 2.1 completo — metadata de recurso
+(RFC 9728) e de authorization server (RFC 8414), `/authorize` com PKCE, `/token`,
+registro dinâmico de cliente (RFC 7591) ou CIMD, e `WWW-Authenticate` nos 401. Além
+disso, o Hermes só implementa os grants `authorization_code` e `refresh_token`, sem
+`client_credentials`: a primeira autorização passa por um navegador, num VPS headless.
+
+Para um consumidor único e conhecido, isso não se paga. O que o OAuth traria de real é
+a substituição de um segredo permanente por tokens de vida curta com refresh — e esse
+mesmo risco tem mitigações mais baratas aqui: `MCP_IP_ALLOWLIST` (já implementada) e
+rotação periódica do `MCP_API_KEY`. Se um dia houver mais de um consumidor, ou o token
+precisar ser revogável por terceiros, aí o OAuth passa a valer o esforço.
 
 **MCP → backend**: o usuário de serviço `hermes-agent` (papel `Gestor`). O servidor faz
 login em `/api/auth/login`, guarda o access token de 1h em memória e renova sozinho. As
@@ -108,6 +121,19 @@ mcp_servers:
     timeout: 180
     connect_timeout: 30
 ```
+
+Verificado contra o Hermes 0.20.5, que mudou coisas relevantes desde a 0.14.0:
+
+- **Preflight de content-type**: antes de conectar, o Hermes sonda a URL com HEAD (e GET
+  se vier 405). Ele só rejeita um endpoint que responda **2xx** com content-type fora de
+  `application/json` / `text/event-stream`. Este servidor responde **405** em HEAD e GET
+  de `/mcp`, então a sonda passa e o handshake real decide. Não é preciso
+  `skip_preflight: true`.
+- **Keepalive**: o Hermes envia `ping` JSON-RPC periodicamente (`keepalive_interval`,
+  padrão 180s). O servidor responde, inclusive em modo stateless.
+- **Negociação de versão do protocolo**: o Hermes anuncia a versão mais recente que
+  conhece; este servidor responde com a mais alta que suporta (`2025-11-25`, do SDK
+  1.30.0) e o cliente aceita a negociada.
 
 Se o modelo começar a errar a escolha entre as ferramentas, recorte o catálogo com
 `tools.include: [...]` no lado do Hermes — sem mexer no servidor.
