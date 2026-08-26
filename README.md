@@ -5,6 +5,9 @@ ao FamaChat: **todos os endpoints do backend** e **o PostgreSQL de produção**.
 
 Publicado em `https://mcp.famachat.com.br/mcp`, autenticado por Bearer token.
 
+📘 [Guia de Instalação](docs/INSTALACAO.md) — levantar o servidor do zero e conectar o Hermes
+📗 [Manual de Uso](docs/MANUAL.md) — as ferramentas, quando usar cada uma e a operação diária
+
 ```
 VPS Hermes  ──HTTPS + Bearer──▶  nginx :443 (mcp.famachat.com.br)
                                       │
