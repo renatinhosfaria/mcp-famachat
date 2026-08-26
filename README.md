@@ -3,10 +3,14 @@
 Servidor MCP que dá ao [Hermes Agent](https://hermes-agent.nousresearch.com/docs) acesso
 ao FamaChat: **todos os endpoints do backend** e **o PostgreSQL de produção**.
 
-Publicado em `https://mcp.famachat.com.br/mcp`, autenticado por Bearer token.
+Publicado em `https://mcp.famachat.com.br/mcp`, autenticado por Bearer token — **no ar e
+em uso**. Conectar um cliente não instala nada: são poucas linhas de configuração.
 
-📘 [Guia de Instalação](docs/INSTALACAO.md) — levantar o servidor do zero e conectar o Hermes
-📗 [Manual de Uso](docs/MANUAL.md) — as ferramentas, quando usar cada uma e a operação diária
+| Se você quer… | Leia |
+|---|---|
+| Conectar um cliente — Hermes, Claude Code, Codex | [Guia de Instalação](docs/INSTALACAO.md) |
+| Saber o que o agente consegue fazer e como pedir | [Manual de Uso](docs/MANUAL.md) |
+| Entender ou operar o servidor em si | este README |
 
 ```
 VPS Hermes  ──HTTPS + Bearer──▶  nginx :443 (mcp.famachat.com.br)

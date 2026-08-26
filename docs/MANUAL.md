@@ -1,158 +1,162 @@
 # Manual de Uso
 
-O que o Hermes consegue fazer no FamaChat através deste servidor, como as ferramentas se
-organizam e como operar o serviço no dia a dia.
+O que você consegue fazer no FamaChat através do agente, e como pedir.
 
-Para instalar do zero, veja o [Guia de Instalação](INSTALACAO.md).
-
----
-
-## As duas famílias de ferramentas
-
-O agente enxerga 277 ferramentas, divididas em duas categorias que se comportam de
-maneira bem diferente.
-
-### `fc_*` — os endpoints do backend
-
-Uma ferramenta por rota HTTP do FamaChat: 271 no total, em 41 módulos. Cada chamada passa
-pelo Express do CRM, e portanto **dispara as regras de negócio** — rotação de leads por
-SLA Cascata, eventos de Meta CAPI, webhooks de saída, validações, invalidação de cache.
-
-É o caminho certo para criar e alterar dados. Um cliente criado por `fc_post_clientes`
-entra no funil como qualquer outro; o mesmo registro inserido por SQL direto não.
-
-### `db_*` — o banco, sem intermediários
-
-Cinco ferramentas de acesso direto ao PostgreSQL de produção. Servem para consultas,
-relatórios e correções em massa que nenhum endpoint cobre.
-
-Escritas aqui **não disparam nada** do backend. E `db_query` aceita DDL — `CREATE`,
-`ALTER`, `DROP`, `TRUNCATE` — por decisão explícita de dar autonomia total sobre o banco.
+Se ainda não conectou seu cliente, comece pelo [Guia de Instalação](INSTALACAO.md).
 
 ---
 
-## Encontrando a ferramenta certa
+## O que o agente passa a enxergar
 
-Com 271 endpoints, adivinhar nomes não funciona. A ferramenta `fc_catalog` é o índice.
+277 ferramentas, em duas famílias que se comportam de maneira bem diferente. Entender a
+diferença é o que separa um pedido que funciona de um que dá resultado estranho.
 
-**Sem argumentos**, lista os módulos e quantas rotas cada um tem:
+### `fc_*` — os endpoints do CRM
+
+Uma ferramenta para cada rota do FamaChat: 271 no total, em 41 módulos. Cada chamada passa
+pelo sistema como se fosse alguém usando a tela — e portanto **dispara as regras de
+negócio**: rotação de leads por SLA Cascata, eventos de Meta CAPI, webhooks de saída,
+validações.
+
+É o caminho certo para **criar e alterar**. Um cliente criado assim entra no funil como
+qualquer outro.
+
+### `db_*` — o banco de dados direto
+
+Cinco ferramentas que falam com o PostgreSQL sem passar pelo CRM. Servem para
+**consultar**: relatórios, contagens, cruzamentos que nenhuma tela oferece.
+
+Escritas aqui **não disparam nada** — nem CAPI, nem webhook, nem rotação de lead.
+
+### A regra curta
+
+> **Ler pelo banco, escrever pelo endpoint.**
+
+---
+
+## Como pedir as coisas
+
+Você conversa em português normal. O agente escolhe a ferramenta. Alguns exemplos do que
+funciona bem:
+
+**Consultas e relatórios**
+
+> Quantos clientes estão em atendimento agora?
+
+> Me dê os 10 clientes mais recentes com nome, telefone e corretor responsável.
+
+> Quantos leads vieram do Facebook Ads este mês, comparado ao mês passado?
+
+> Quais corretores têm mais clientes ativos?
+
+> Quantas visitas foram agendadas esta semana?
+
+**Buscar algo específico**
+
+> Procure o cliente com telefone (34) 99999-1234.
+
+> Mostre o histórico de anotações do cliente 12790.
+
+> Esse cliente tem alguma visita marcada?
+
+**Criar e alterar**
+
+> Crie um cliente: Maria Silva, (34) 99999-1234, veio pelo WhatsApp.
+
+> Mude o status do cliente 12790 para Em Atendimento.
+
+> Agende uma visita para o cliente 12790 na próxima terça às 14h.
+
+**Entender a estrutura**
+
+> Que ferramentas existem para trabalhar com imóveis?
+
+> Quais campos a tabela de clientes tem?
+
+Quando o pedido for ambíguo, o agente vai perguntar em vez de adivinhar — principalmente
+se envolver alterar ou apagar dados.
+
+---
+
+## O catálogo de ferramentas
+
+Com 271 endpoints, o agente não decora nomes: ele consulta `fc_catalog`, o índice.
+
+Você pode pedir isso diretamente quando quiser saber o que existe:
+
+> Liste os módulos disponíveis no FamaChat.
 
 ```
-fc_catalog({})
-→ 271 endpoints do FamaChat em 41 módulos
+271 endpoints do FamaChat em 41 módulos
+
+Rotas por módulo:
    38  whatsapp
    30  empreendimentos-page
    13  clientes
    12  agenda
    11  arquivos
+   10  proprietarios
+   10  sla-cascata
    ...
 ```
 
-**Por módulo**, lista as rotas com o nome exato da ferramenta:
+> Que ferramentas existem no módulo clientes?
 
 ```
-fc_catalog({ modulo: "clientes" })
-→ GET    /api/clientes            →  fc_get_clientes
-  POST   /api/clientes            →  fc_post_clientes
-  GET    /api/clientes/:id        →  fc_get_clientes_by_id
-  PATCH  /api/clientes/:id        →  fc_patch_clientes_by_id
-  DELETE /api/clientes/:id        →  fc_del_clientes_by_id
-  ...
+GET    /api/clientes            →  fc_get_clientes
+POST   /api/clientes            →  fc_post_clientes
+GET    /api/clientes/:id        →  fc_get_clientes_by_id
+PATCH  /api/clientes/:id        →  fc_patch_clientes_by_id
+DELETE /api/clientes/:id        →  fc_del_clientes_by_id
+GET    /api/clientes/:id/notes  →  fc_get_clientes_by_id_notes
+...
 ```
 
-**Por busca livre**, entendendo português e acentos:
+A busca entende português mesmo quando a rota está em inglês: procurar `agendamento` acha
+`/api/appointments`, `venda` acha `/api/sales`, `painel` acha `/api/dashboard`. Acentos e
+plural também — `imóveis` acha casas, apartamentos e terrenos.
 
-```
-fc_catalog({ busca: "agendamento" })   → encontra /api/appointments
-fc_catalog({ busca: "imóveis" })       → encontra casas, apartamentos, terrenos
-fc_catalog({ busca: "venda" })         → encontra /api/sales
-```
+### Os módulos
 
-Boa parte das rotas está em inglês enquanto a conversa acontece em português, então a
-busca traduz: `agendamento`→`appointment`, `venda`→`sale`, `usuário`→`user`,
-`painel`→`dashboard`, `mensagem`→`whatsapp`, entre outros. Acentos e plural simples
-também são resolvidos.
-
-### Como os nomes são formados
-
-O padrão é previsível, o que ajuda quando você já viu um parecido:
-
-| Rota | Ferramenta |
+| Módulo | Cobre |
 |---|---|
-| `GET /api/clientes` | `fc_get_clientes` |
-| `POST /api/clientes` | `fc_post_clientes` |
-| `GET /api/clientes/:id` | `fc_get_clientes_by_id` |
-| `PATCH /api/clientes/:id` | `fc_patch_clientes_by_id` |
-| `DELETE /api/clientes/:id` | `fc_del_clientes_by_id` |
-| `GET /api/clientes/:id/notes` | `fc_get_clientes_by_id_notes` |
-| `DELETE /api/clientes/notes/:noteId` | `fc_del_clientes_notes_by_noteid` |
-
-Prefixo `fc_`, o método (`get`/`post`/`put`/`patch`/`del`), depois o caminho com `/`
-virando `_` e cada `:parâmetro` virando `by_parâmetro`.
+| `clientes` | O funil comercial — criar, atualizar, notas, empreendimentos de interesse |
+| `agenda` | Agendamentos e visitas |
+| `leads` | Leads captados e conversão em cliente |
+| `sales` | Vendas |
+| `sla-cascata` | Rotação automática de leads entre corretores |
+| `automation` | Regras de distribuição de leads |
+| `whatsapp` | Instâncias, conexão, envio e status |
+| `empreendimentos-page`, `apartamentos-novo`, `casas`, `terrenos`, `imoveis` | Catálogo imobiliário |
+| `proprietarios`, `construtoras` | Cadastros de origem dos imóveis |
+| `dashboard`, `dashboard-gestor`, `metrics` | Indicadores e ranking de corretores |
+| `users`, `horarios-usuario` | Corretores e suas escalas |
+| `arquivos`, `storage-admin`, `midia-upload` | Gerenciador de arquivos |
+| `auth` | Autenticação |
+| `webhooks/*` | Webhooks de entrada e saída |
 
 ---
 
-## Chamando um endpoint
+## O que o agente vê ao chamar uma ferramenta
 
-Toda ferramenta `fc_*` aceita a mesma forma de argumentos:
+Você não precisa saber disso para usar, mas ajuda a interpretar quando algo dá errado.
 
-- **um campo por parâmetro de rota** — `id`, `noteId`, `userId`…
-- **`query`** — objeto com os parâmetros de query string
-- **`body`** — objeto com o corpo JSON (só em POST, PUT, PATCH e DELETE)
+Cada ferramenta `fc_*` recebe os parâmetros da rota, um `query` opcional e, quando faz
+sentido, um `body`:
 
 ```jsonc
-// GET /api/clientes?limit=20&status=Em Atendimento
 fc_get_clientes({ query: { limit: 20, status: "Em Atendimento" } })
-
-// GET /api/clientes/12790
 fc_get_clientes_by_id({ id: 12790 })
-
-// POST /api/clientes
-fc_post_clientes({
-  body: { fullName: "Maria Silva", phone: "(34) 99999-1234", source: "WhatsApp" }
-})
-
-// PATCH /api/clientes/12790
 fc_patch_clientes_by_id({ id: 12790, body: { status: "Em Atendimento" } })
-
-// GET /api/clientes/12790/notes?limit=5
-fc_get_clientes_by_id_notes({ id: 12790, query: { limit: 5 } })
 ```
 
-A resposta traz o status HTTP e o corpo cru, sem reinterpretação:
+E devolve o status HTTP junto com a resposta crua do CRM:
 
 ```json
-{
-  "status": 200,
-  "statusText": "OK",
-  "truncated": false,
-  "body": { "data": [ ... ] }
-}
+{ "status": 200, "statusText": "OK", "truncated": false, "body": { "data": [ ... ] } }
 ```
 
-A API do FamaChat não tem um envelope único — algumas rotas devolvem o objeto direto,
-outras `{ success, message }`, outras um array. O servidor repassa o que veio. Status
-igual ou acima de 400 marca a resposta como erro.
-
-Respostas acima de 1 MB vêm cortadas, com `truncated: true`. Quando isso acontecer,
-estreite o resultado com `query` (paginação, filtros) em vez de pedir tudo de novo.
-
----
-
-## Consultando o banco
-
-```jsonc
-// Sempre prefira parâmetros a interpolar valores no texto
-db_query({
-  sql: "SELECT id, full_name, status FROM clientes WHERE broker_id = $1 LIMIT 50",
-  params: [24]
-})
-
-// Teto de linhas: padrão 1000, ajustável por chamada
-db_query({ sql: "SELECT * FROM sistema_leads", max_rows: 200 })
-```
-
-Retorna comando, linhas afetadas, duração e os dados:
+As consultas ao banco vêm assim:
 
 ```
 comando: SELECT | linhas afetadas/retornadas: 3 | duração: 588ms
@@ -160,19 +164,14 @@ comando: SELECT | linhas afetadas/retornadas: 3 | duração: 588ms
 [ { "id": 12790, "full_name": "Maria Silva", "status": "Em Atendimento" } ]
 ```
 
-### Antes de escrever SQL
+Um detalhe que às vezes confunde: o banco usa `snake_case` (`full_name`) e a API do CRM
+usa `camelCase` (`fullName`). É o mesmo dado, com nome diferente conforme o caminho.
 
-O schema não é adivinhável — as tabelas usam `snake_case` no banco, enquanto a API
-devolve `camelCase`:
+---
 
-```jsonc
-db_list_tables({})                          // o que existe e o tamanho de cada tabela
-db_describe_table({ table: "clientes" })    // colunas, tipos, constraints, índices, FKs
-db_list_enums({})                           // valores aceitos nos campos enum
-db_explain({ sql: "SELECT ..." })           // plano de execução, antes de rodar algo pesado
-```
+## As tabelas do banco
 
-### As tabelas principais
+Para consultas, é útil saber onde as coisas moram:
 
 | Tabela | Guarda |
 |---|---|
@@ -180,186 +179,105 @@ db_explain({ sql: "SELECT ..." })           // plano de execução, antes de rod
 | `clientes_id_anotacoes` | Histórico e notas de cada cliente |
 | `clientes_agendamentos` | Compromissos da agenda |
 | `clientes_visitas` | Visitas a imóveis |
-| `sistema_users` | Corretores, gestores e o próprio `hermes-agent` |
+| `sistema_users` | Corretores e gestores |
 | `sistema_leads` | Leads captados |
 | `sistema_leads_sla_cascata` | Rotação de leads pelo SLA Cascata |
 | `imoveis_empreendimentos`, `imoveis_apartamentos` | Catálogo imobiliário |
-| `sistema_auth_audit_log` | Trilha de autenticação do backend |
 
-`db_describe_table` dá o detalhe de qualquer uma.
+Não precisa decorar. Peça:
+
+> Quais campos a tabela clientes tem?
+
+e o agente traz colunas, tipos, constraints e índices.
 
 ---
 
-## Endpoint ou banco: como escolher
+## Cuidados
 
-| Situação | Use |
+O agente tem acesso irrestrito ao CRM e ao banco. Três situações pedem atenção:
+
+**Alterar a estrutura do banco.** Comandos como `DROP TABLE` ou `ALTER TABLE` não mexem em
+um registro: mudam o esqueleto de que o FamaChat depende para funcionar. `DROP TABLE
+clientes` não apaga um cliente — apaga todos e a própria tabela.
+
+**Alteração em massa.** Um "atualize o status de todos os clientes" atinge a base inteira.
+Vale conferir o número de linhas antes: peça a contagem primeiro, depois a alteração.
+
+**Exclusões.** Apagar cliente, lead ou agendamento remove de verdade.
+
+> ⚠️ **Não há como desfazer.** O banco de produção não tem backup automático funcionando
+> hoje: não existe point-in-time recovery, e a rotina de backup que roda no servidor cobre
+> outro banco. Na prática, um comando destrutivo não tem de onde ser restaurado. Trate
+> exclusões e alterações em massa com o cuidado que isso exige.
+
+O agente foi instruído a confirmar antes de operações destrutivas, mas a instrução é um
+pedido, não uma trava.
+
+**Tudo fica registrado.** Cada chamada de ferramenta vira uma linha num log de auditoria
+no servidor: qual ferramenta, com que argumentos, qual SQL, quantas linhas, quanto tempo,
+e se deu erro. Se algo estranho acontecer, dá para reconstruir exatamente o que foi feito.
+
+---
+
+## Escrever pelo banco ou pelo endpoint?
+
+| Situação | Caminho |
 |---|---|
-| Criar cliente, lead, agendamento, venda | **`fc_*`** — as regras de negócio precisam rodar |
-| Mudar status de um cliente no funil | **`fc_*`** — dispara Meta CAPI e webhooks |
-| Relatório, contagem, cruzamento de tabelas | **`db_query`** — muito mais direto |
-| Buscar algo que nenhum endpoint filtra | **`db_query`** |
-| Corrigir dado em massa (centenas de linhas) | **`db_query`**, ciente de que nada é disparado |
-| Entender a estrutura do banco | **`db_describe_table`** |
+| Criar cliente, lead, agendamento, venda | **Endpoint** — as regras de negócio precisam rodar |
+| Mudar status de cliente no funil | **Endpoint** — dispara Meta CAPI e webhooks |
+| Relatório, contagem, cruzamento | **Banco** — muito mais direto |
+| Buscar algo que nenhuma tela filtra | **Banco** |
+| Corrigir centenas de linhas de uma vez | **Banco**, ciente de que nada é disparado |
 
-A regra curta: **ler pelo banco, escrever pelo endpoint**. Escrever direto no banco é
-possível e às vezes é o certo — mas o registro não vai gerar evento de CAPI, não vai
-disparar webhook e não vai entrar na rotação de SLA.
+Se você não disser nada, o agente escolhe — e a escolha padrão dele é a certa. Vale ser
+explícito quando importar:
 
----
+> Crie esse cliente **pelo endpoint**, para entrar na rotação normal.
 
-## O que exige confirmação
-
-O agente tem acesso irrestrito. Três categorias merecem uma pergunta antes:
-
-**DDL.** `CREATE`, `ALTER`, `DROP`, `TRUNCATE` mudam a estrutura de que o FamaChat
-depende para funcionar. `DROP TABLE clientes` não apaga um cliente: apaga
-todos eles e a própria tabela. Comandos assim ficam registrados com aviso no log da aplicação.
-
-**Escrita em massa sem `WHERE`.** Um `UPDATE clientes SET status = ...` sem cláusula
-atinge a base inteira.
-
-**Exclusões.** As ferramentas `fc_del_*` e `DELETE` em SQL removem de verdade.
-
-> **Sobre restaurar:** o banco de produção não tem point-in-time recovery
-> (`archive_mode = off`) e o backup automático que roda neste servidor cobre outro banco.
-> Na prática, hoje um comando destrutivo não tem de onde ser desfeito. Vale confirmar o
-> estado do backup antes de operações de risco.
+> Faça essa correção **direto no banco**, sem disparar webhook.
 
 ---
 
-## Auditoria
+## Limites
 
-Toda chamada de ferramenta vira uma linha em `logs/audit.jsonl`:
+| Limite | Valor |
+|---|---|
+| Linhas por consulta ao banco | 1000 |
+| Duração de uma consulta | 30 segundos |
+| Duração de uma chamada ao CRM | 60 segundos |
+| Tamanho da resposta do CRM | 1 MB |
 
-```json
-{"ts":"2026-08-26T16:33:17.694Z","tool":"fc_post_clientes","target":"POST /api/clientes",
- "args":{"body":{"fullName":"..."}},"status":"ok","httpStatus":201,"durationMs":1103}
-```
+Estourar um limite não quebra nada: o resultado volta marcado como truncado, ou o erro
+explica o que houve. Quando acontecer, estreite o pedido — filtre por período, por
+corretor, por status — em vez de pedir tudo de novo.
 
-```bash
-tail -f logs/audit.jsonl                                    # acompanhar ao vivo
-grep '"tool":"db_query"' logs/audit.jsonl | tail -20        # só as consultas SQL
-grep '"status":"error"' logs/audit.jsonl | tail -20         # só as falhas
-```
-
-O arquivo fica em disco, fora do alcance de qualquer ferramenta exposta — como o agente
-pode executar DDL, a trilha não podia morar no banco que ele administra. Retenção de 90
-dias.
-
-Do lado do Postgres, as sessões do agente aparecem no `pg_stat_activity` com
-`application_name = mcp-hermes`, o que as separa das do backend.
-
----
-
-## Operação
-
-### Comandos do dia a dia
-
-```bash
-pm2 status mcp-famachat            # está no ar?
-pm2 logs mcp-famachat --lines 50   # log da aplicação
-pm2 restart mcp-famachat           # reiniciar
-curl -s https://mcp.famachat.com.br/health
-```
-
-O `/health` responde sem token e sem filtro de IP, e mostra o essencial:
-
-```json
-{"status":"ok","server":{"name":"famachat","version":"1.0.0"},
- "tools":277,"backendCommit":"e1acfed","uptimeSeconds":1368}
-```
-
-O `backendCommit` diz de qual versão do FamaChat o catálogo foi gerado. Se estiver atrás
-do que roda em produção, o agente está vendo rotas desatualizadas.
-
-### Quando as rotas do FamaChat mudam
-
-Toda vez que um endpoint for criado, removido ou renomeado no backend:
-
-```bash
-cd /var/www/mcp-famachat
-pnpm gen:routes
-pnpm build
-pm2 restart mcp-famachat
-```
-
-Sem isso, o agente continua com o catálogo antigo — ferramentas que respondem 404 e rotas
-novas que ele nem enxerga. O Hermes relê `tools/list` ao reconectar.
-
-### Rotacionar a senha do Hermes
-
-```bash
-NOVA=$(openssl rand -hex 32)
-sed -i "s|^MCP_API_KEY=.*|MCP_API_KEY=$NOVA|" .env
-pm2 restart mcp-famachat --update-env
-bash hermes-config-snippet.sh    # gera o bloco novo para o config.yaml do Hermes
-```
-
-O Hermes só volta a conectar depois de atualizar o `config.yaml` dele e reiniciar o
-daemon — planeje os dois passos juntos.
-
-### Cortar o acesso do agente
-
-Três níveis, do mais brando ao mais severo:
-
-```sql
--- 1. Tira o acesso ao backend, mantém o banco (as fc_* passam a falhar)
-UPDATE sistema_users SET is_active = false WHERE username = 'hermes-agent';
-```
-
-```bash
-# 2. Fecha o servidor para todo mundo, sem derrubar nada
-sed -i 's|^MCP_IP_ALLOWLIST=.*|MCP_IP_ALLOWLIST=127.0.0.1|' .env
-pm2 restart mcp-famachat --update-env
-
-# 3. Desliga o MCP
-pm2 stop mcp-famachat
-```
-
----
-
-## Limites que valem conhecer
-
-| Limite | Padrão | Variável |
-|---|---|---|
-| Linhas por consulta SQL | 1000 | `DB_MAX_ROWS` |
-| Duração de uma query | 30s | `DB_STATEMENT_TIMEOUT_MS` |
-| Duração de uma chamada ao backend | 60s | `FAMACHAT_REQUEST_TIMEOUT_MS` |
-| Tamanho da resposta do backend | 1 MB | `FAMACHAT_MAX_RESPONSE_BYTES` |
-| Conexões simultâneas ao banco | 5 | `DB_POOL_MAX` |
-| Corpo da requisição | 25 MB | nginx e Express |
-
-Estourar um limite não quebra nada: a consulta volta com `truncated: true`, ou o erro
-explica o que aconteceu.
-
-Duas coisas que o servidor **não** faz: upload de arquivo binário pelas ferramentas (os
-endpoints de mídia esperam `multipart/form-data`, e as ferramentas mandam JSON) e
-streaming de resultado — toda resposta chega inteira.
+Duas coisas que **não** dá para fazer por aqui: enviar arquivos binários (fotos, vídeos,
+PDFs — os endpoints de mídia esperam upload de formulário, e as ferramentas mandam JSON)
+e acompanhar resultado em tempo real, já que toda resposta chega inteira, de uma vez.
 
 ---
 
 ## Perguntas frequentes
 
-**O agente pode apagar o CRM inteiro?**
-Tecnicamente sim: `db_query` aceita DDL, por decisão de projeto. Por isso os avisos, a
-auditoria em disco e a recomendação de confirmar comandos destrutivos.
+**As ações do agente aparecem como de quem no FamaChat?**
+De um usuário próprio, `hermes-agent`, com papel de Gestor. Ele aparece nos logs e como
+responsável nos registros que criar — separado das pessoas de verdade.
 
-**As ações do agente aparecem no FamaChat como de quem?**
-Do usuário `hermes-agent` (id 40, papel Gestor). Ele aparece nos logs, no
-`sistema_auth_audit_log` e como `brokerId` nos registros que criar.
+**O agente pode ver tudo?**
+Sim. O papel Gestor cobre praticamente todo o sistema. Algumas rotas checam departamento
+além do papel; nesses casos a resposta diz qual permissão faltou.
 
-**Por que uma ferramenta responde 404?**
-A rota saiu ou mudou de nome no backend e o manifesto está velho. Rode `pnpm gen:routes`.
+**Uma ferramenta respondeu 404. E agora?**
+A rota mudou no CRM e o catálogo do servidor está desatualizado. Avise quem administra o
+servidor — é um comando para regenerar.
 
-**Por que uma ferramenta responde 403?**
-O papel `Gestor` cobre quase tudo, mas algumas rotas checam departamento além do papel.
-O corpo da resposta diz qual permissão faltou.
+**Uma ferramenta respondeu 403.**
+Ou é permissão no CRM (a resposta diz qual), ou o seu IP não está liberado no servidor.
 
-**Dá para o Hermes ver só parte das ferramentas?**
-Sim, e sem tocar no servidor: use `tools.include` ou `tools.exclude` no `config.yaml` do
-Hermes. Útil se o modelo começar a errar a escolha entre as 277.
+**Dá para limitar o que o agente enxerga?**
+Sim, e é configuração do lado do cliente, não do servidor. No Hermes, `tools.include` ou
+`tools.exclude` no `config.yaml` recortam o conjunto. Útil se o agente começar a se
+confundir entre as 277.
 
-**O servidor guarda estado entre chamadas?**
-Não. Ele roda em modo stateless: cada requisição é independente, e um restart do PM2 é
-transparente para o Hermes. A única coisa mantida em memória é o token JWT do usuário de
-serviço, que se renova sozinho.
+**O servidor lembra do que eu pedi antes?**
+Não. Cada chamada é independente. A memória da conversa é do seu agente, não do servidor.
