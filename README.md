@@ -45,9 +45,23 @@ disso, o Hermes só implementa os grants `authorization_code` e `refresh_token`,
 
 Para um consumidor único e conhecido, isso não se paga. O que o OAuth traria de real é
 a substituição de um segredo permanente por tokens de vida curta com refresh — e esse
-mesmo risco tem mitigações mais baratas aqui: `MCP_IP_ALLOWLIST` (já implementada) e
+mesmo risco tem mitigações mais baratas aqui: a allowlist de IP (ativa, abaixo) e
 rotação periódica do `MCP_API_KEY`. Se um dia houver mais de um consumidor, ou o token
 precisar ser revogável por terceiros, aí o OAuth passa a valer o esforço.
+
+### Allowlist de IP
+
+`MCP_IP_ALLOWLIST` restringe quem pode falar com `/mcp`, mesmo com o token correto.
+Em produção: o VPS do Hermes (`169.58.161.112`), mais este servidor e o loopback para
+diagnóstico. `GET /health` fica de fora da checagem, para monitoramento.
+
+**De onde vem o IP importa.** O nginx monta `X-Forwarded-For` com
+`$proxy_add_x_forwarded_for`, que *anexa* o IP real ao que o cliente mandou — ler o
+primeiro item leria exatamente a parte que o cliente controla, e bastaria enviar
+`X-Forwarded-For: <ip-permitido>` para furar a lista. Por isso `clientIpOf` usa
+`X-Real-IP` (que o `proxy_set_header` sobrescreve, então não é falsificável) e, na
+falta dele, o **último** item do `X-Forwarded-For`. Há testes cobrindo as duas
+tentativas de forja.
 
 **MCP → backend**: o usuário de serviço `hermes-agent` (papel `Gestor`). O servidor faz
 login em `/api/auth/login`, guarda o access token de 1h em memória e renova sozinho. As
@@ -145,7 +159,7 @@ Veja `.env.example`. As que importam:
 | Variável | Para quê |
 |---|---|
 | `MCP_API_KEY` | A senha que o Hermes envia. Gere com `openssl rand -hex 32` |
-| `MCP_IP_ALLOWLIST` | IPs autorizados, separados por vírgula. Vazio desliga a checagem |
+| `MCP_IP_ALLOWLIST` | IPs autorizados em `/mcp`, separados por vírgula. Vazio desliga a checagem. `/health` nunca é filtrado |
 | `MCP_STATEFUL` | `0` (padrão) = sem sessão; `1` = sessão com `Mcp-Session-Id` |
 | `FAMACHAT_SERVICE_EMAIL` / `_PASSWORD` | Credenciais do usuário de serviço |
 | `DATABASE_URL` | Conexão com o PostgreSQL de produção |

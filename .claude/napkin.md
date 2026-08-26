@@ -11,6 +11,8 @@
 | 2026-08-26 | self | Nome de tool saiu como `fc_post_rate_limit_reset_by_userid?` — o `?` do parâmetro opcional do Express vazou | Sanitizar todo segmento; `*` vira `wildcard` |
 | 2026-08-26 | self | Teste com `mockResolvedValue(jsonResponse(...))` reusava o mesmo `Response`, que só pode ser lido uma vez | Usar `mockImplementation(async () => jsonResponse(...))` para criar um objeto novo por chamada |
 | 2026-08-26 | self | `fc_catalog` com busca "agendamento" não achava nada — as rotas são `/api/appointments` | Tabela de sinônimos PT→EN + normalização de acentos e plural. O Hermes opera em português |
+| 2026-08-26 | self | Afirmei no README que header estático era a única credencial suportada, baseado no container local (Hermes 0.14.0). O VPS consumidor roda 0.20.5, que tem `auth: oauth` | Perguntar a versão do **consumidor**; verificar no código da `main` do repo, não no container que está à mão |
+| 2026-08-26 | self | `clientIpOf` lia o **primeiro** item de `X-Forwarded-For`. Com `$proxy_add_x_forwarded_for` o nginx *anexa* o IP real ao que o cliente enviou — a allowlist era furável com um header forjado | Usar `X-Real-IP` (sobrescrito pelo `proxy_set_header`) e, na falta, o **último** item do XFF. Testes de forja cobrem as duas vias |
 
 ## User Preferences
 - Decisões tomadas por Renato em 26/08/2026: uma tool MCP por endpoint (não uma genérica); acesso ao Postgres **sem trava**, dados e estrutura, DDL incluído; usuário de serviço dedicado para o backend; repositório GitHub público mesmo após alerta sobre exposição da superfície.
@@ -33,6 +35,7 @@
 - Login do backend usa **email** (não username); access token 1h, refresh 7d; `token_version` invalida tokens antigos.
 - Usuário de serviço: `hermes-agent`, id 40, papel `Gestor`/`Gestão`. Revogar com `UPDATE sistema_users SET is_active = false WHERE username = 'hermes-agent'`.
 - Banco de produção: `neondb` em `144.126.134.23:5432`, ~40 MB, 8.477 clientes.
+- VPS do Hermes: `169.58.161.112` (`vmi3501798.contaboserver.net`, Contabo/FR). `mcp.famachat.com.br` não tem AAAA, então a conexão é sempre IPv4 — a allowlist não tem como ser contornada por IPv6.
 
 ## ⚠ Backup do banco de produção (verificado em 2026-08-26)
 O banco de produção **não tem backup automático funcionando**:

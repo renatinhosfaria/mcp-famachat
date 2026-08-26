@@ -33,14 +33,29 @@ export function extractBearer(header: string | undefined): string | null {
 }
 
 /**
- * IP de origem. Atrás do nginx o socket é sempre 127.0.0.1, então o valor real
- * vem do primeiro item de `X-Forwarded-For`.
+ * IP de origem confiável. Atrás do nginx o socket é sempre 127.0.0.1, então o
+ * valor real vem de um header — mas nem todo header serve.
+ *
+ * `X-Forwarded-For` é montado com `$proxy_add_x_forwarded_for`, que **anexa** o
+ * IP real ao que o cliente mandou. Ler o primeiro item leria justamente a parte
+ * que o cliente controla: bastaria enviar `X-Forwarded-For: <ip-permitido>` para
+ * furar a allowlist. O item confiável é o **último**, acrescentado pelo nginx.
+ *
+ * `X-Real-IP` é melhor ainda: o nginx o define com `proxy_set_header`, que
+ * sobrescreve qualquer valor vindo de fora. É a primeira escolha.
  */
 export function clientIpOf(req: Request): string {
-  const forwarded = req.headers['x-forwarded-for'];
-  const raw = Array.isArray(forwarded) ? forwarded[0] : forwarded;
-  const first = raw?.split(',')[0]?.trim();
-  return first || req.socket.remoteAddress || 'desconhecido';
+  const header = (name: string): string | undefined => {
+    const value = req.headers[name];
+    return Array.isArray(value) ? value[0] : value;
+  };
+
+  const realIp = header('x-real-ip')?.trim();
+  if (realIp) return realIp;
+
+  const forwarded = header('x-forwarded-for');
+  const last = forwarded?.split(',').at(-1)?.trim();
+  return last || req.socket.remoteAddress || 'desconhecido';
 }
 
 export function checkAuth(

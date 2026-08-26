@@ -70,13 +70,48 @@ describe('checkAuth', () => {
 });
 
 describe('clientIpOf', () => {
-  it('usa o primeiro IP de X-Forwarded-For', () => {
-    expect(clientIpOf(fakeRequest({ 'x-forwarded-for': '203.0.113.10, 10.0.0.1' }))).toBe(
-      '203.0.113.10'
+  it('prefere X-Real-IP, que o nginx sobrescreve', () => {
+    expect(clientIpOf(fakeRequest({ 'x-real-ip': '203.0.113.10' }))).toBe('203.0.113.10');
+  });
+
+  it('usa o ÚLTIMO item de X-Forwarded-For, o que o nginx acrescentou', () => {
+    expect(clientIpOf(fakeRequest({ 'x-forwarded-for': '203.0.113.10, 198.51.100.7' }))).toBe(
+      '198.51.100.7'
     );
   });
 
   it('cai para o socket quando não há proxy', () => {
     expect(clientIpOf(fakeRequest({}, '198.51.100.2'))).toBe('198.51.100.2');
+  });
+});
+
+describe('allowlist não pode ser furada por header forjado', () => {
+  const PERMITIDO = '169.58.161.112';
+
+  it('ignora um X-Forwarded-For forjado pelo cliente', () => {
+    // O nginx entrega "<valor forjado>, <ip real>": o real é sempre o último.
+    const req = fakeRequest({
+      authorization: `Bearer ${KEY}`,
+      'x-forwarded-for': `${PERMITIDO}, 45.33.32.156`,
+    });
+    expect(checkAuth(req, KEY, [PERMITIDO])).toMatchObject({
+      ok: false,
+      status: 403,
+      code: 'IP_NOT_ALLOWED',
+    });
+  });
+
+  it('ignora X-Forwarded-For forjado quando o nginx mandou X-Real-IP', () => {
+    const req = fakeRequest({
+      authorization: `Bearer ${KEY}`,
+      'x-forwarded-for': PERMITIDO,
+      'x-real-ip': '45.33.32.156',
+    });
+    expect(checkAuth(req, KEY, [PERMITIDO])).toMatchObject({ ok: false, status: 403 });
+  });
+
+  it('aceita a origem legítima', () => {
+    const req = fakeRequest({ authorization: `Bearer ${KEY}`, 'x-real-ip': PERMITIDO });
+    expect(checkAuth(req, KEY, [PERMITIDO])).toEqual({ ok: true });
   });
 });
