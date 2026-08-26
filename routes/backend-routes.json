@@ -1,0 +1,2962 @@
+{
+  "version": 1,
+  "sourceRoot": "/var/www/famachat",
+  "sourceCommit": "e1acfed",
+  "generatedAt": "2026-08-26T16:17:33.854Z",
+  "counts": {
+    "total": 271,
+    "unique": 256,
+    "aliases": 15
+  },
+  "routes": [
+    {
+      "method": "GET",
+      "route": "/api/apartamentos",
+      "sourceFile": "server/routes/apartamentos-novo.ts",
+      "sourceLine": 110,
+      "module": "apartamentos-novo",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/apartamentos",
+      "sourceFile": "server/routes/apartamentos-novo.ts",
+      "sourceLine": 183,
+      "module": "apartamentos-novo",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/apartamentos/:id",
+      "sourceFile": "server/routes/apartamentos-novo.ts",
+      "sourceLine": 388,
+      "module": "apartamentos-novo",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/apartamentos/:id",
+      "sourceFile": "server/routes/apartamentos-novo.ts",
+      "sourceLine": 158,
+      "module": "apartamentos-novo",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/apartamentos/:id",
+      "sourceFile": "server/routes/apartamentos-novo.ts",
+      "sourceLine": 278,
+      "module": "apartamentos-novo",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/apartamentos/empreendimento/:id",
+      "sourceFile": "server/routes/apartamentos-novo.ts",
+      "sourceLine": 123,
+      "module": "apartamentos-novo",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/apartamentos/publico/empreendimento/:id",
+      "sourceFile": "server/routes/apartamentos-novo.ts",
+      "sourceLine": 75,
+      "module": "apartamentos-novo",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/appointments",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 248,
+      "module": "agenda",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/appointments",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 300,
+      "module": "agenda",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/appointments/:id",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 468,
+      "module": "agenda",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/appointments/:id",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 276,
+      "module": "agenda",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PATCH",
+      "route": "/api/appointments/:id",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 402,
+      "module": "agenda",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/appointments/:id",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 354,
+      "module": "agenda",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/arquivos",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 531,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/arquivos",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 161,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/arquivos/copy",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 566,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/arquivos/download",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 222,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/arquivos/download-zip",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 244,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/arquivos/folder",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 405,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/arquivos/move",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 591,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/arquivos/search",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 182,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/arquivos/share",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 387,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/arquivos/thumbnails",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 503,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/arquivos/upload",
+      "sourceFile": "server/routes/arquivos.ts",
+      "sourceLine": 441,
+      "module": "arquivos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/auth/login",
+      "sourceFile": "server/routes/auth.ts",
+      "sourceLine": 215,
+      "module": "auth",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/auth/logout",
+      "sourceFile": "server/routes/auth.ts",
+      "sourceLine": 423,
+      "module": "auth",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/auth/me",
+      "sourceFile": "server/routes/auth.ts",
+      "sourceLine": 382,
+      "module": "auth",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/auth/refresh",
+      "sourceFile": "server/routes/auth.ts",
+      "sourceLine": 320,
+      "module": "auth",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/automation",
+      "sourceFile": "server/routes/automation.ts",
+      "sourceLine": 47,
+      "module": "automation",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/automation",
+      "sourceFile": "server/routes/automation.ts",
+      "sourceLine": 118,
+      "module": "automation",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/automation/:id",
+      "sourceFile": "server/routes/automation.ts",
+      "sourceLine": 218,
+      "module": "automation",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/automation/:id",
+      "sourceFile": "server/routes/automation.ts",
+      "sourceLine": 87,
+      "module": "automation",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/automation/:id",
+      "sourceFile": "server/routes/automation.ts",
+      "sourceLine": 162,
+      "module": "automation",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/automation/all",
+      "sourceFile": "server/routes/automation.ts",
+      "sourceLine": 70,
+      "module": "automation",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/cache/clear",
+      "sourceFile": "server/routes/cache-status.ts",
+      "sourceLine": 32,
+      "module": "cache-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/cache/invalidate-clientes",
+      "sourceFile": "server/routes/cache-status.ts",
+      "sourceLine": 114,
+      "module": "cache-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/cache/invalidate/:prefix",
+      "sourceFile": "server/routes/cache-status.ts",
+      "sourceLine": 83,
+      "module": "cache-status",
+      "pathParams": [
+        "prefix"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/cache/stats",
+      "sourceFile": "server/routes/cache-status.ts",
+      "sourceLine": 53,
+      "module": "cache-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/cache/status",
+      "sourceFile": "server/routes/cache-status.ts",
+      "sourceLine": 13,
+      "module": "cache-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/casas",
+      "sourceFile": "server/routes/casas.ts",
+      "sourceLine": 375,
+      "module": "casas",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/casas",
+      "sourceFile": "server/routes/casas.ts",
+      "sourceLine": 398,
+      "module": "casas",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/casas/:id",
+      "sourceFile": "server/routes/casas.ts",
+      "sourceLine": 526,
+      "module": "casas",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/casas/:id",
+      "sourceFile": "server/routes/casas.ts",
+      "sourceLine": 385,
+      "module": "casas",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/casas/:id",
+      "sourceFile": "server/routes/casas.ts",
+      "sourceLine": 453,
+      "module": "casas",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/casas/empreendimento/:id",
+      "sourceFile": "server/routes/casas.ts",
+      "sourceLine": 361,
+      "module": "casas",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/casas/publico/empreendimento/:id",
+      "sourceFile": "server/routes/casas.ts",
+      "sourceLine": 350,
+      "module": "casas",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/clientes",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 85,
+      "module": "clientes",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/clientes",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 165,
+      "module": "clientes",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/clientes/:id",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 426,
+      "module": "clientes",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/clientes/:id",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 136,
+      "module": "clientes",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PATCH",
+      "route": "/api/clientes/:id",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 315,
+      "module": "clientes",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/clientes/:id",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 252,
+      "module": "clientes",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/clientes/:id/empreendimentos",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 577,
+      "module": "clientes",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/clientes/:id/empreendimentos",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 621,
+      "module": "clientes",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/clientes/:id/empreendimentos/:empreendimentoId",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 688,
+      "module": "clientes",
+      "pathParams": [
+        "id",
+        "empreendimentoId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/clientes/:id/notes",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 468,
+      "module": "clientes",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/clientes/:id/notes",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 499,
+      "module": "clientes",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/clientes/all",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 43,
+      "module": "clientes",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/clientes/notes/:noteId",
+      "sourceFile": "server/routes/clientes.ts",
+      "sourceLine": 543,
+      "module": "clientes",
+      "pathParams": [
+        "noteId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/construtoras",
+      "sourceFile": "server/routes/construtoras.ts",
+      "sourceLine": 55,
+      "module": "construtoras",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/construtoras",
+      "sourceFile": "server/routes/construtoras.ts",
+      "sourceLine": 106,
+      "module": "construtoras",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/construtoras/:id",
+      "sourceFile": "server/routes/construtoras.ts",
+      "sourceLine": 144,
+      "module": "construtoras",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/construtoras/:id",
+      "sourceFile": "server/routes/construtoras.ts",
+      "sourceLine": 75,
+      "module": "construtoras",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/construtoras/:id",
+      "sourceFile": "server/routes/construtoras.ts",
+      "sourceLine": 122,
+      "module": "construtoras",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/construtoras/:id/contatos",
+      "sourceFile": "server/routes/construtoras.ts",
+      "sourceLine": 91,
+      "module": "construtoras",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/construtoras/buscar",
+      "sourceFile": "server/routes/construtoras.ts",
+      "sourceLine": 64,
+      "module": "construtoras",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/cors-errors",
+      "sourceFile": "server/routes/cors.ts",
+      "sourceLine": 10,
+      "module": "cors",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/cors-stats",
+      "sourceFile": "server/routes/cors.ts",
+      "sourceLine": 62,
+      "module": "cors",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/csp-report",
+      "sourceFile": "server/routes.ts",
+      "sourceLine": 67,
+      "module": "routes",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/gestor/corretores",
+      "sourceFile": "server/routes/dashboard-gestor.ts",
+      "sourceLine": 621,
+      "module": "dashboard-gestor",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/gestor/imoveis-desatualizados",
+      "sourceFile": "server/routes/dashboard-gestor.ts",
+      "sourceLine": 562,
+      "module": "dashboard-gestor",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/gestor/imoveis-recentes",
+      "sourceFile": "server/routes/dashboard-gestor.ts",
+      "sourceLine": 522,
+      "module": "dashboard-gestor",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/gestor/indices-mensais",
+      "sourceFile": "server/routes/dashboard-gestor.ts",
+      "sourceLine": 270,
+      "module": "dashboard-gestor",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/gestor/indices-mes-atual",
+      "sourceFile": "server/routes/dashboard-gestor.ts",
+      "sourceLine": 191,
+      "module": "dashboard-gestor",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/gestor/indices-ultimos-12-meses",
+      "sourceFile": "server/routes/dashboard-gestor.ts",
+      "sourceLine": 326,
+      "module": "dashboard-gestor",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/gestor/metrica-detalhada/:tipo",
+      "sourceFile": "server/routes/dashboard-gestor.ts",
+      "sourceLine": 645,
+      "module": "dashboard-gestor",
+      "pathParams": [
+        "tipo"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/gestor/metrics-completas",
+      "sourceFile": "server/routes/dashboard-gestor.ts",
+      "sourceLine": 145,
+      "module": "dashboard-gestor",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/gestor/ranking-corretores",
+      "sourceFile": "server/routes/dashboard-gestor.ts",
+      "sourceLine": 389,
+      "module": "dashboard-gestor",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/metrics",
+      "sourceFile": "server/routes/dashboard.ts",
+      "sourceLine": 392,
+      "module": "dashboard",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/recent-clientes",
+      "sourceFile": "server/routes/dashboard.ts",
+      "sourceLine": 609,
+      "module": "dashboard",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/test-auth",
+      "sourceFile": "server/routes/dashboard.ts",
+      "sourceLine": 374,
+      "module": "dashboard",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/dashboard/upcoming-appointments",
+      "sourceFile": "server/routes/dashboard.ts",
+      "sourceLine": 639,
+      "module": "dashboard",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 373,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 644,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos-page",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 373,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos-page",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 644,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/empreendimentos-page/:id",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 1424,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos-page/:id",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 616,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "PUT",
+      "route": "/api/empreendimentos-page/:id",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 933,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos-page/:id/contatos",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 241,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos-page/buscar",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 222,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos-page/completo",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 330,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos-page/opcoes-lazer",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 556,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos-page/opcoes-lazer",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 584,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos-page/opcoes-servicos",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 470,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos-page/opcoes-servicos",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 498,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos-page/publico/:id",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 306,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos-page/upload-foto",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 1523,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos-page/upload-video",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 1619,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": true
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/empreendimentos/:id",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 1424,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos/:id",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 616,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/empreendimentos/:id",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 933,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos/:id/contatos",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 241,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos/buscar",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 222,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos/completo",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 330,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos/opcoes-lazer",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 556,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos/opcoes-lazer",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 584,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos/opcoes-servicos",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 470,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos/opcoes-servicos",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 498,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/empreendimentos/publico/:id",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 306,
+      "module": "empreendimentos-page",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos/upload-foto",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 1523,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/empreendimentos/upload-video",
+      "sourceFile": "server/routes/empreendimentos-page.ts",
+      "sourceLine": 1619,
+      "module": "empreendimentos-page",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/enderecos/cep/:cep",
+      "sourceFile": "server/routes/enderecos.ts",
+      "sourceLine": 16,
+      "module": "enderecos",
+      "pathParams": [
+        "cep"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/health",
+      "sourceFile": "server/routes.ts",
+      "sourceLine": 56,
+      "module": "routes",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/health/detailed",
+      "sourceFile": "server/routes/metrics.ts",
+      "sourceLine": 121,
+      "module": "metrics",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/horarios-usuario/:userId",
+      "sourceFile": "server/routes/horarios-usuario.ts",
+      "sourceLine": 162,
+      "module": "horarios-usuario",
+      "pathParams": [
+        "userId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/horarios-usuario/:userId",
+      "sourceFile": "server/routes/horarios-usuario.ts",
+      "sourceLine": 25,
+      "module": "horarios-usuario",
+      "pathParams": [
+        "userId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/image-proxy",
+      "sourceFile": "server/routes/image-proxy.ts",
+      "sourceLine": 132,
+      "module": "image-proxy",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/imoveis",
+      "sourceFile": "server/routes/imoveis.ts",
+      "sourceLine": 27,
+      "module": "imoveis",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/imoveis",
+      "sourceFile": "server/routes/imoveis.ts",
+      "sourceLine": 42,
+      "module": "imoveis",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/imoveis-novo",
+      "sourceFile": "server/routes/imoveis-novo.ts",
+      "sourceLine": 46,
+      "module": "imoveis-novo",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/imoveis-novo",
+      "sourceFile": "server/routes/imoveis-novo.ts",
+      "sourceLine": 72,
+      "module": "imoveis-novo",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/imoveis-novo/:id",
+      "sourceFile": "server/routes/imoveis-novo.ts",
+      "sourceLine": 229,
+      "module": "imoveis-novo",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/imoveis-novo/:id",
+      "sourceFile": "server/routes/imoveis-novo.ts",
+      "sourceLine": 56,
+      "module": "imoveis-novo",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/imoveis-novo/:id",
+      "sourceFile": "server/routes/imoveis-novo.ts",
+      "sourceLine": 200,
+      "module": "imoveis-novo",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/imoveis/:id",
+      "sourceFile": "server/routes/imoveis.ts",
+      "sourceLine": 249,
+      "module": "imoveis",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/imoveis/:id",
+      "sourceFile": "server/routes/imoveis.ts",
+      "sourceLine": 228,
+      "module": "imoveis",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/internal/appointments",
+      "sourceFile": "server/routes/internal-appointments.ts",
+      "sourceLine": 90,
+      "module": "internal-appointments",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/internal/appointments/:appointmentId/regularize",
+      "sourceFile": "server/routes/internal-appointments.ts",
+      "sourceLine": 108,
+      "module": "internal-appointments",
+      "pathParams": [
+        "appointmentId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/leads",
+      "sourceFile": "server/routes/leads.ts",
+      "sourceLine": 28,
+      "module": "leads",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/leads",
+      "sourceFile": "server/routes/leads.ts",
+      "sourceLine": 70,
+      "module": "leads",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/leads/:id",
+      "sourceFile": "server/routes/leads.ts",
+      "sourceLine": 117,
+      "module": "leads",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/leads/:id",
+      "sourceFile": "server/routes/leads.ts",
+      "sourceLine": 50,
+      "module": "leads",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PATCH",
+      "route": "/api/leads/:id",
+      "sourceFile": "server/routes/leads.ts",
+      "sourceLine": 89,
+      "module": "leads",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/leads/:id/convert",
+      "sourceFile": "server/routes/leads.ts",
+      "sourceLine": 137,
+      "module": "leads",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/leads/all",
+      "sourceFile": "server/routes/leads.ts",
+      "sourceLine": 17,
+      "module": "leads",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/metrics",
+      "sourceFile": "server/routes/metrics.ts",
+      "sourceLine": 26,
+      "module": "metrics",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/metrics/business",
+      "sourceFile": "server/routes/metrics.ts",
+      "sourceLine": 80,
+      "module": "metrics",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/metrics/clear",
+      "sourceFile": "server/routes/metrics.ts",
+      "sourceLine": 173,
+      "module": "metrics",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/metrics/stats",
+      "sourceFile": "server/routes/metrics.ts",
+      "sourceLine": 48,
+      "module": "metrics",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/metrics/test",
+      "sourceFile": "server/routes/metrics.ts",
+      "sourceLine": 203,
+      "module": "metrics",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/midia/upload",
+      "sourceFile": "server/routes/midia-upload.ts",
+      "sourceLine": 35,
+      "module": "midia-upload",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/og-image/empreendimento/:id",
+      "sourceFile": "server/routes/og-image.ts",
+      "sourceLine": 41,
+      "module": "og-image",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/proprietarios",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 102,
+      "module": "proprietarios",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/proprietarios",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 529,
+      "module": "proprietarios",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/proprietarios/:id",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 657,
+      "module": "proprietarios",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/proprietarios/:id",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 460,
+      "module": "proprietarios",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/proprietarios/:id",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 587,
+      "module": "proprietarios",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/proprietarios/buscar",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 286,
+      "module": "proprietarios",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/proprietarios/pf",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 406,
+      "module": "proprietarios",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/proprietarios/pf/:id",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 437,
+      "module": "proprietarios",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/proprietarios/pf/:id",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 419,
+      "module": "proprietarios",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/proprietarios/unificado",
+      "sourceFile": "server/routes/proprietarios.ts",
+      "sourceLine": 336,
+      "module": "proprietarios",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/rate-limit/check/:type",
+      "sourceFile": "server/routes/rate-limit-status.ts",
+      "sourceLine": 157,
+      "module": "rate-limit-status",
+      "pathParams": [
+        "type"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/rate-limit/health",
+      "sourceFile": "server/routes/rate-limit-status.ts",
+      "sourceLine": 273,
+      "module": "rate-limit-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/rate-limit/metrics",
+      "sourceFile": "server/routes/rate-limit-status.ts",
+      "sourceLine": 220,
+      "module": "rate-limit-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/rate-limit/reset/:userId?",
+      "sourceFile": "server/routes/rate-limit-status.ts",
+      "sourceLine": 70,
+      "module": "rate-limit-status",
+      "pathParams": [],
+      "optionalParams": [
+        "userId"
+      ],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/rate-limit/status",
+      "sourceFile": "server/routes/rate-limit-status.ts",
+      "sourceLine": 17,
+      "module": "rate-limit-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/sales",
+      "sourceFile": "server/routes/sales.ts",
+      "sourceLine": 9,
+      "module": "sales",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/sales",
+      "sourceFile": "server/routes/sales.ts",
+      "sourceLine": 36,
+      "module": "sales",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/sales/:id",
+      "sourceFile": "server/routes/sales.ts",
+      "sourceLine": 157,
+      "module": "sales",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/sales/:id",
+      "sourceFile": "server/routes/sales.ts",
+      "sourceLine": 23,
+      "module": "sales",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PATCH",
+      "route": "/api/sales/:id",
+      "sourceFile": "server/routes/sales.ts",
+      "sourceLine": 100,
+      "module": "sales",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/sales/:id",
+      "sourceFile": "server/routes/sales.ts",
+      "sourceLine": 83,
+      "module": "sales",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/sla-cascata/check",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 113,
+      "module": "sla-cascata",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/sla-cascata/cliente/:id/encerrar",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 172,
+      "module": "sla-cascata",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/sla-cascata/cliente/:id/status",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 142,
+      "module": "sla-cascata",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/sla-cascata/logs/cliente/:clienteId",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 201,
+      "module": "sla-cascata",
+      "pathParams": [
+        "clienteId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/sla-cascata/logs/export/cliente/:clienteId.csv",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 245,
+      "module": "sla-cascata",
+      "pathParams": [
+        "clienteId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/sla-cascata/logs/sla/:slaId",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 223,
+      "module": "sla-cascata",
+      "pathParams": [
+        "slaId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/sla-cascata/scheduler/start",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 75,
+      "module": "sla-cascata",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/sla-cascata/scheduler/status",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 53,
+      "module": "sla-cascata",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/sla-cascata/scheduler/stop",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 94,
+      "module": "sla-cascata",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/sla-cascata/stats",
+      "sourceFile": "server/routes/sla-cascata.ts",
+      "sourceLine": 34,
+      "module": "sla-cascata",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/storage/config",
+      "sourceFile": "server/routes/storage-admin.ts",
+      "sourceLine": 261,
+      "module": "storage-admin",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/storage/files",
+      "sourceFile": "server/routes/storage-admin.ts",
+      "sourceLine": 86,
+      "module": "storage-admin",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/storage/files/*",
+      "sourceFile": "server/routes/storage-admin.ts",
+      "sourceLine": 119,
+      "module": "storage-admin",
+      "pathParams": [
+        "wildcard"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/storage/migrate",
+      "sourceFile": "server/routes/storage-admin.ts",
+      "sourceLine": 34,
+      "module": "storage-admin",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/storage/signed-url",
+      "sourceFile": "server/routes/storage-admin.ts",
+      "sourceLine": 167,
+      "module": "storage-admin",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/storage/status",
+      "sourceFile": "server/routes/storage-admin.ts",
+      "sourceLine": 15,
+      "module": "storage-admin",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/storage/test-connection",
+      "sourceFile": "server/routes/storage-admin.ts",
+      "sourceLine": 207,
+      "module": "storage-admin",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/system/cache",
+      "sourceFile": "server/routes/system-status.ts",
+      "sourceLine": 23,
+      "module": "system-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/system/cache/clear",
+      "sourceFile": "server/routes/system-status.ts",
+      "sourceLine": 42,
+      "module": "system-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/system/stats",
+      "sourceFile": "server/routes/system-status.ts",
+      "sourceLine": 61,
+      "module": "system-status",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/terrenos",
+      "sourceFile": "server/routes/terrenos.ts",
+      "sourceLine": 120,
+      "module": "terrenos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/terrenos",
+      "sourceFile": "server/routes/terrenos.ts",
+      "sourceLine": 161,
+      "module": "terrenos",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/terrenos/:id",
+      "sourceFile": "server/routes/terrenos.ts",
+      "sourceLine": 191,
+      "module": "terrenos",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/terrenos/:id",
+      "sourceFile": "server/routes/terrenos.ts",
+      "sourceLine": 146,
+      "module": "terrenos",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/terrenos/:id",
+      "sourceFile": "server/routes/terrenos.ts",
+      "sourceLine": 172,
+      "module": "terrenos",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/terrenos/empreendimento/:id",
+      "sourceFile": "server/routes/terrenos.ts",
+      "sourceLine": 131,
+      "module": "terrenos",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/test/lead-distribution",
+      "sourceFile": "server/routes/test-lead-distribution.ts",
+      "sourceLine": 13,
+      "module": "test-lead-distribution",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/uploads/imovel/:imovelId",
+      "sourceFile": "server/routes/uploads.ts",
+      "sourceLine": 7,
+      "module": "uploads",
+      "pathParams": [
+        "imovelId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/users",
+      "sourceFile": "server/routes/users.ts",
+      "sourceLine": 60,
+      "module": "users",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/users",
+      "sourceFile": "server/routes/users.ts",
+      "sourceLine": 140,
+      "module": "users",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/users/:id",
+      "sourceFile": "server/routes/users.ts",
+      "sourceLine": 255,
+      "module": "users",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/users/:id",
+      "sourceFile": "server/routes/users.ts",
+      "sourceLine": 126,
+      "module": "users",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/users/:id",
+      "sourceFile": "server/routes/users.ts",
+      "sourceLine": 185,
+      "module": "users",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/users/:id/data-summary",
+      "sourceFile": "server/routes/users.ts",
+      "sourceLine": 311,
+      "module": "users",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PATCH",
+      "route": "/api/users/:id/status",
+      "sourceFile": "server/routes/users.ts",
+      "sourceLine": 333,
+      "module": "users",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/users/:id/transfer-data",
+      "sourceFile": "server/routes/users.ts",
+      "sourceLine": 406,
+      "module": "users",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/users/performance",
+      "sourceFile": "server/routes/users.ts",
+      "sourceLine": 74,
+      "module": "users",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/visits",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 500,
+      "module": "agenda",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/visits",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 546,
+      "module": "agenda",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/visits/:id",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 651,
+      "module": "agenda",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/visits/:id",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 523,
+      "module": "agenda",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PATCH",
+      "route": "/api/visits/:id",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 649,
+      "module": "agenda",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/visits/:id",
+      "sourceFile": "server/modules/agenda/routes/agenda.routes.ts",
+      "sourceLine": 648,
+      "module": "agenda",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/webhook-events/:eventId",
+      "sourceFile": "server/routes/webhooks/webhook-events.routes.ts",
+      "sourceLine": 88,
+      "module": "webhooks/webhook-events",
+      "pathParams": [
+        "eventId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/webhook-events/:eventId/payload",
+      "sourceFile": "server/routes/webhooks/webhook-events.routes.ts",
+      "sourceLine": 127,
+      "module": "webhooks/webhook-events",
+      "pathParams": [
+        "eventId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/webhook/whatsapp",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2785,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/webhooks",
+      "sourceFile": "server/routes/webhooks/webhook-management.routes.ts",
+      "sourceLine": 69,
+      "module": "webhooks/webhook-management",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/webhooks",
+      "sourceFile": "server/routes/webhooks/webhook-management.routes.ts",
+      "sourceLine": 36,
+      "module": "webhooks/webhook-management",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/webhooks/:id",
+      "sourceFile": "server/routes/webhooks/webhook-management.routes.ts",
+      "sourceLine": 279,
+      "module": "webhooks/webhook-management",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/webhooks/:id",
+      "sourceFile": "server/routes/webhooks/webhook-management.routes.ts",
+      "sourceLine": 218,
+      "module": "webhooks/webhook-management",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "PUT",
+      "route": "/api/webhooks/:id",
+      "sourceFile": "server/routes/webhooks/webhook-management.routes.ts",
+      "sourceLine": 245,
+      "module": "webhooks/webhook-management",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/webhooks/:id/events",
+      "sourceFile": "server/routes/webhooks/webhook-events.routes.ts",
+      "sourceLine": 31,
+      "module": "webhooks/webhook-events",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/webhooks/:id/test",
+      "sourceFile": "server/routes/webhooks/webhook-management.routes.ts",
+      "sourceLine": 301,
+      "module": "webhooks/webhook-management",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/webhooks/available-fields",
+      "sourceFile": "server/routes/webhooks/webhook-management.routes.ts",
+      "sourceLine": 202,
+      "module": "webhooks/webhook-management",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/webhooks/event-types",
+      "sourceFile": "server/routes/webhooks/webhook-management.routes.ts",
+      "sourceLine": 127,
+      "module": "webhooks/webhook-management",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/webhooks/events/:eventId/retry",
+      "sourceFile": "server/routes/webhooks/webhook-events.routes.ts",
+      "sourceLine": 167,
+      "module": "webhooks/webhook-events",
+      "pathParams": [
+        "eventId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/webhooks/facebook/leads",
+      "sourceFile": "server/routes/webhooks/facebook-leads.routes.ts",
+      "sourceLine": 185,
+      "module": "webhooks/facebook-leads",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/webhooks/facebook/leads",
+      "sourceFile": "server/routes/webhooks/facebook-leads.routes.ts",
+      "sourceLine": 215,
+      "module": "webhooks/facebook-leads",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/webhooks/facebook/leads/test",
+      "sourceFile": "server/routes/webhooks/facebook-leads.routes.ts",
+      "sourceLine": 299,
+      "module": "webhooks/facebook-leads",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/webhooks/stats",
+      "sourceFile": "server/routes/webhooks/webhook-management.routes.ts",
+      "sourceLine": 93,
+      "module": "webhooks/webhook-management",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp-image/:clienteId",
+      "sourceFile": "server/routes/image-proxy.ts",
+      "sourceLine": 276,
+      "module": "image-proxy",
+      "pathParams": [
+        "clienteId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp-image/renew/:clienteId",
+      "sourceFile": "server/routes/image-proxy.ts",
+      "sourceLine": 591,
+      "module": "image-proxy",
+      "pathParams": [
+        "clienteId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/batch-fetch-profile-pictures",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2610,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/check-all-numbers",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2244,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/check-numbers",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2007,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/check-status/:id",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 1845,
+      "module": "whatsapp",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/connect/:id",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 1157,
+      "module": "whatsapp",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/diagnose/:instanceName",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3722,
+      "module": "whatsapp",
+      "pathParams": [
+        "instanceName"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/direct-evolution-call",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3488,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/disconnect/:id",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 1210,
+      "module": "whatsapp",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/evolution-instances",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 870,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/fetch-client-profile-picture",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 4102,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/fetch-contact-profile/:instanceName",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3127,
+      "module": "whatsapp",
+      "pathParams": [
+        "instanceName"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/fetch-external-instances",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 884,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/fetch-profile-picture/:clienteId",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2363,
+      "module": "whatsapp",
+      "pathParams": [
+        "clienteId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/force-check-status",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 1608,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/health",
+      "sourceFile": "server/routes/whatsapp-renewal.ts",
+      "sourceLine": 98,
+      "module": "whatsapp-renewal",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/instances",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 899,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/instances",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 1020,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "DELETE",
+      "route": "/api/whatsapp/instances/:id",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 1295,
+      "module": "whatsapp",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/instances/:id",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 950,
+      "module": "whatsapp",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/logs",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 847,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/logs/profile-pics",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 856,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/profile-picture/:instanceName",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2945,
+      "module": "whatsapp",
+      "pathParams": [
+        "instanceName"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/profile/:instanceName",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3053,
+      "module": "whatsapp",
+      "pathParams": [
+        "instanceName"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/profile/update-name/:instance",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3398,
+      "module": "whatsapp",
+      "pathParams": [
+        "instance"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/profile/update-picture/:instance",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3259,
+      "module": "whatsapp",
+      "pathParams": [
+        "instance"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/profile/update-status/:instance",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3443,
+      "module": "whatsapp",
+      "pathParams": [
+        "instance"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/qrcode/:instanceName",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 1333,
+      "module": "whatsapp",
+      "pathParams": [
+        "instanceName"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/renew-cliente-url/:clienteId",
+      "sourceFile": "server/routes/whatsapp-renewal.ts",
+      "sourceLine": 49,
+      "module": "whatsapp-renewal",
+      "pathParams": [
+        "clienteId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/renew-expired-urls",
+      "sourceFile": "server/routes/whatsapp-renewal.ts",
+      "sourceLine": 16,
+      "module": "whatsapp-renewal",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/renew-profile-pic",
+      "sourceFile": "server/routes/whatsapp-profile-renewal.ts",
+      "sourceLine": 88,
+      "module": "whatsapp-profile-renewal",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/renew-profile-pics-batch",
+      "sourceFile": "server/routes/whatsapp-profile-renewal.ts",
+      "sourceLine": 183,
+      "module": "whatsapp-profile-renewal",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/sequential-profile-pictures/start",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3773,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/sequential-profile-pictures/status",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3876,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/sequential-profile-pictures/stop",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3919,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/sequential-validation/start",
+      "sourceFile": "server/routes/sequential-validation.ts",
+      "sourceLine": 17,
+      "module": "sequential-validation",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/sequential-validation/status",
+      "sourceFile": "server/routes/sequential-validation.ts",
+      "sourceLine": 70,
+      "module": "sequential-validation",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/sequential-validation/stop",
+      "sourceFile": "server/routes/sequential-validation.ts",
+      "sourceLine": 113,
+      "module": "sequential-validation",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/settings",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 3194,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/settings/:instanceName",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2914,
+      "module": "whatsapp",
+      "pathParams": [
+        "instanceName"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/status/:instanceName",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 1498,
+      "module": "whatsapp",
+      "pathParams": [
+        "instanceName"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/update-jids",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2443,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/verify-actual-status/:id",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 4268,
+      "module": "whatsapp",
+      "pathParams": [
+        "id"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/verify-actual-status/:instanceId",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 1700,
+      "module": "whatsapp",
+      "pathParams": [
+        "instanceId"
+      ],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "POST",
+      "route": "/api/whatsapp/webhook/config",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2835,
+      "module": "whatsapp",
+      "pathParams": [],
+      "optionalParams": [],
+      "alias": false
+    },
+    {
+      "method": "GET",
+      "route": "/api/whatsapp/webhook/config/:instanceName",
+      "sourceFile": "server/routes/whatsapp.ts",
+      "sourceLine": 2883,
+      "module": "whatsapp",
+      "pathParams": [
+        "instanceName"
+      ],
+      "optionalParams": [],
+      "alias": false
+    }
+  ]
+}

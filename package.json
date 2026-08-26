@@ -1,0 +1,43 @@
+{
+  "name": "mcp-famachat",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "MCP server que expõe o backend do FamaChat e o PostgreSQL de produção ao Hermes Agent",
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "tsx --env-file=.env src/index.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node --env-file=.env dist/index.js",
+    "gen:routes": "tsx scripts/generate-routes.ts",
+    "provision:user": "tsx --env-file=.env scripts/provision-service-user.ts",
+    "check": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "express": "^5.2.1",
+    "pg": "^8.16.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.0",
+    "@types/pg": "^8.16.0",
+    "bcrypt": "^5.1.1",
+    "@types/bcrypt": "^5.0.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "bcrypt",
+      "esbuild"
+    ]
+  }
+}
